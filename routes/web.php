@@ -8,6 +8,8 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\VerificationController;
+
 
 Route::middleware(['auth'])->group(function () {
 
@@ -32,7 +34,7 @@ Route::middleware(['auth'])->group(function () {
 
 
         //products
-        Route::prefix('product')->group(function() {
+        Route::prefix('product')->group(function () {
             Route::get('list', [ProductController::class, 'list'])->name('product#list');
             Route::get('new', [ProductController::class, 'new'])->name('product#new');
             Route::post('create', [ProductController::class, 'create'])->name('product#create');
@@ -43,7 +45,7 @@ Route::middleware(['auth'])->group(function () {
         });
 
         //admin
-        Route::prefix('admin/account')->group(function() {
+        Route::prefix('admin/account')->group(function () {
             Route::get('list', [AdminController::class, 'list'])->name('admin#list');
             Route::get('change-password', [AdminController::class, 'changePasswordPage'])->name('admin#changePasswordPage');
             Route::post('update-password', [AdminController::class, 'updatePassword'])->name('admin#updatePassword');
@@ -75,7 +77,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('updatePassword', [UserController::class, 'updatePassword'])->name('user#updatePassword');
         Route::get('view', [UserController::class, 'view'])->name('user#view');
         Route::get('edit/{id}', [UserController::class, 'edit'])->name('user#edit');
-        Route::post('update/{id}', [UserController::class,'update'])->name('user#update');
+        Route::post('update/{id}', [UserController::class, 'update'])->name('user#update');
 
         // carts
         Route::get('carts', [UserController::class, 'carts'])->name('user#carts');
@@ -100,8 +102,18 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // login, register
-Route::middleware(['admin_auth'])->group(function() {
+Route::middleware(['admin_auth'])->group(function () {
     Route::redirect('/', 'loginPage');
-    Route::get('loginPage',[AuthController::class, 'loginPage'])->name('auth#loginPage');
+    Route::get('loginPage', [AuthController::class, 'loginPage'])->name('auth#loginPage');
     Route::get('registerPage', [AuthController::class, 'registerPage'])->name('auth#registerPage');
 });
+
+// Auth
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+// OTP
+Route::get('/verify', [VerificationController::class, 'showVerificationForm'])->name('verify.form');
+Route::post('/verify-otp', [VerificationController::class, 'verifyOtp'])->name('verify.otp');
+Route::post('/resend-otp', [VerificationController::class, 'resendOtp'])->name('resend.otp');
+
