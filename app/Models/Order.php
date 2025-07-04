@@ -11,8 +11,13 @@ class Order extends Model
 
     protected $fillable = [
         'user_id',
-        'total_price',
+        'name',
+        'phone',
+        'address',
+        'payment_method',
+        'receipt',
         'status',
+        'total_price',
     ];
 
     // Relasi ke User

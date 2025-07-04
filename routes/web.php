@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\User\CheckoutController;
 
 
 Route::middleware(['auth'])->group(function () {
@@ -116,4 +117,9 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::get('/verify', [VerificationController::class, 'showVerificationForm'])->name('verify.form');
 Route::post('/verify-otp', [VerificationController::class, 'verifyOtp'])->name('verify.otp');
 Route::post('/resend-otp', [VerificationController::class, 'resendOtp'])->name('resend.otp');
+
+Route::middleware(['user_auth'])->group(function () {
+    Route::get('/user/checkout', [CheckoutController::class, 'index'])->name('user#checkout');
+    Route::post('/user/checkout/submit', [CheckoutController::class, 'submit'])->name('user#checkoutSubmit');
+});
 
