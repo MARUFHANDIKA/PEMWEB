@@ -10,7 +10,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\User\CheckoutController;
-
+use App\Http\Controllers\User\ContactController;
 
 Route::middleware(['auth'])->group(function () {
 
@@ -123,3 +123,4 @@ Route::middleware(['user_auth'])->group(function () {
     Route::post('/user/checkout/submit', [CheckoutController::class, 'submit'])->name('user#checkoutSubmit');
 });
 
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
