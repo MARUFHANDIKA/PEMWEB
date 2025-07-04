@@ -10,20 +10,36 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\LandingController;
 
+// Public Landing Page
+Route::get('/', [LandingController::class, 'index'])->name('landing');
 
+// Login & Register
+Route::get('loginPage', [AuthController::class, 'loginPage'])->name('auth#loginPage');
+Route::get('registerPage', [AuthController::class, 'registerPage'])->name('auth#registerPage');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+// OTP Verification
+Route::get('/verify', [VerificationController::class, 'showVerificationForm'])->name('verify.form');
+Route::post('/verify-otp', [VerificationController::class, 'verifyOtp'])->name('verify.otp');
+Route::post('/resend-otp', [VerificationController::class, 'resendOtp'])->name('resend.otp');
+
+// Authenticated Routes
 Route::middleware(['auth'])->group(function () {
 
-    //dashboard
+    // Dashboard
     Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
-    // categories 
+    // Admin Routes
     Route::middleware(['admin_auth'])->group(function () {
-        //user list 
 
+        // User List
         Route::get('user/list', [AdminController::class, 'userList'])->name('user#list');
         Route::get('user/changeUserRole', [AdminController::class, 'changeUserRole'])->name('user#changeUserRole');
-        //categories 
+
+        // Categories
         Route::prefix('category')->group(function () {
             Route::get('list', [CategoryController::class, 'list'])->name('category#list');
             Route::get('create', [CategoryController::class, 'createPage'])->name('category#createPage');
@@ -33,19 +49,18 @@ Route::middleware(['auth'])->group(function () {
             Route::post('update', [CategoryController::class, 'update'])->name('category#update');
         });
 
-
-        //products
+        // Products
         Route::prefix('product')->group(function () {
             Route::get('list', [ProductController::class, 'list'])->name('product#list');
             Route::get('new', [ProductController::class, 'new'])->name('product#new');
             Route::post('create', [ProductController::class, 'create'])->name('product#create');
             Route::get('edit/{id}', [ProductController::class, 'edit'])->name('product#edit');
             Route::post('update/{id}', [ProductController::class, 'update'])->name('product#update');
-            Route::get('delete{id}', [ProductController::class, 'delete'])->name('product#delete');
+            Route::get('delete/{id}', [ProductController::class, 'delete'])->name('product#delete');
             Route::get('show/{id}', [ProductController::class, 'show'])->name('product#show');
         });
 
-        //admin
+        // Admin Account
         Route::prefix('admin/account')->group(function () {
             Route::get('list', [AdminController::class, 'list'])->name('admin#list');
             Route::get('change-password', [AdminController::class, 'changePasswordPage'])->name('admin#changePasswordPage');
@@ -58,19 +73,17 @@ Route::middleware(['auth'])->group(function () {
             Route::post('updateRole/{id}', [AdminController::class, 'updateRole'])->name('admin#updateRole');
         });
 
-        // orders 
+        // Orders
         Route::prefix('order')->group(function () {
             Route::get('list', [OrderController::class, 'list'])->name('order#list');
             Route::get('status', [AjaxController::class, 'orderStatus'])->name('ajax#orderStatus');
             Route::get('filter', [AjaxController::class, 'filterOrders'])->name('ajax#filterOrders');
             Route::get('/order/download/csv', [OrderController::class, 'downloadCSV'])->name('order#csvDownload');
-
         });
     });
 
-    //user
+    // User Routes
     Route::prefix('user')->middleware('user_auth')->group(function () {
-        // users 
         Route::get('home', [UserController::class, 'home'])->name('user#home');
         Route::get('home/{id}', [UserController::class, 'filter'])->name('user#filter');
         Route::get('menu/{id}', [UserController::class, 'show'])->name('user#show');
@@ -80,15 +93,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('edit/{id}', [UserController::class, 'edit'])->name('user#edit');
         Route::post('update/{id}', [UserController::class, 'update'])->name('user#update');
 
-        // carts
+        // Carts
         Route::get('carts', [UserController::class, 'carts'])->name('user#carts');
-        // orders
+
+        // Orders
         Route::get('history', [UserController::class, 'history'])->name('user#history');
 
-
-
-
-        //ajax
+        // Ajax for user
         Route::prefix('ajax')->group(function () {
             Route::get('menu', [AjaxController::class, 'menuList'])->name('ajax#menuList');
             Route::get('addToCart', [AjaxController::class, 'addToCart'])->name('ajax#addToCart');
@@ -99,27 +110,12 @@ Route::middleware(['auth'])->group(function () {
         });
     });
 
+    // Order List for both admin/user
     Route::get('orderList/{id}', [OrderController::class, 'orderList'])->name('orderList');
 });
 
-// login, register
-Route::middleware(['admin_auth'])->group(function () {
-    Route::redirect('/', 'loginPage');
-    Route::get('loginPage', [AuthController::class, 'loginPage'])->name('auth#loginPage');
-    Route::get('registerPage', [AuthController::class, 'registerPage'])->name('auth#registerPage');
-});
-
-// Auth
-Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/register', [AuthController::class, 'register'])->name('register');
-
-// OTP
-Route::get('/verify', [VerificationController::class, 'showVerificationForm'])->name('verify.form');
-Route::post('/verify-otp', [VerificationController::class, 'verifyOtp'])->name('verify.otp');
-Route::post('/resend-otp', [VerificationController::class, 'resendOtp'])->name('resend.otp');
-
+// Checkout (user only)
 Route::middleware(['user_auth'])->group(function () {
     Route::get('/user/checkout', [CheckoutController::class, 'index'])->name('user#checkout');
     Route::post('/user/checkout/submit', [CheckoutController::class, 'submit'])->name('user#checkoutSubmit');
 });
-
