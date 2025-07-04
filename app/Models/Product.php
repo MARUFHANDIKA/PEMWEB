@@ -20,26 +20,33 @@ class Product extends Model
         'image',
         'price',
         'waiting_time',
-        'view_count'
+        'view_count',
+        'stock'
     ];
 
-    public function category() {
+
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 
-    public function orders() {
+    public function orders()
+    {
         return $this->hasMany(Order::class);
     }
 
-    public function carts() {
+    public function carts()
+    {
         return $this->hasMany(Cart::class);
     }
 
-    public function ratings() {
+    public function ratings()
+    {
         return $this->hasMany(Rating::class);
     }
 
-    public function orderLists() {
+    public function orderLists()
+    {
         return $this->hasMany(OrderList::class);
     }
 }

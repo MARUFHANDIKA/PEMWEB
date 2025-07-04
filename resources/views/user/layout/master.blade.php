@@ -36,7 +36,7 @@
         <div class="container px-0">
             <nav class="navbar navbar-expand-lg navbar-dark py-3">
                 <a class="navbar-brand fw-bold" href="{{ route('user#home') }}">
-                    <i class="fa-solid fa-pizza-slice"></i> Food's
+                    <i class="mie-ayam"></i> mie ayam bakar pakde joyo
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                     <span class="navbar-toggler-icon"></span>
@@ -44,13 +44,16 @@
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::routeIs('user#home') ? 'active' : '' }}" href="{{ route('user#home') }}">Home</a>
+                            <a class="nav-link {{ Request::routeIs('user#home') ? 'active' : '' }}"
+                                href="{{ route('user#home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::routeIs('user#carts') ? 'active' : '' }}" href="{{ route('user#carts') }}">Cart</a>
+                            <a class="nav-link {{ Request::routeIs('user#carts') ? 'active' : '' }}"
+                                href="{{ route('user#carts') }}">Cart</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::routeIs('user#history') ? 'active' : '' }}" href="{{ route('user#history') }}">History</a>
+                            <a class="nav-link {{ Request::routeIs('user#history') ? 'active' : '' }}"
+                                href="{{ route('user#history') }}">History</a>
                         </li>
                     </ul>
                     <div class="dropdown">
@@ -58,8 +61,10 @@
                             <i class="fa-solid fa-user me-1"></i> {{ Auth::user()->name }}
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="{{ route('user#view') }}"><i class="fa-solid fa-user"></i> Account</a></li>
-                            <li><a class="dropdown-item" href="{{ route('user#changePassword') }}"><i class="fa-solid fa-lock"></i> Change Password</a></li>
+                            <li><a class="dropdown-item" href="{{ route('user#view') }}"><i
+                                        class="fa-solid fa-user"></i> Account</a></li>
+                            <li><a class="dropdown-item" href="{{ route('user#changePassword') }}"><i
+                                        class="fa-solid fa-lock"></i> Change Password</a></li>
                             <li>
                                 <form action="{{ route('logout') }}" method="post" class="px-3">
                                     @csrf
