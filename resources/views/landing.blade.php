@@ -8,7 +8,7 @@
   <div class="container">
     <h1>Nikmati Lezatnya <span>Mie Ayam Bakar</span> Spesial Pakde Joyo!</h1>
     <p>Rasa autentik khas rumahan, harga bersahabat, dan cepat disajikan</p>
-    <a href="#menu" class="btn-primary">Pesan Sekarang</a>
+    <a href="{{ route('auth#loginPage') }}" class="btn-primary">Pesan Sekarang</a>
   </div>
 </section>
 
@@ -41,7 +41,7 @@
         <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
         <h4 style="margin-top: 15px;">{{ $product->name }}</h4>
         <p class="price">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-        <a href="#" class="btn">Lihat Detail</a>
+        <a href="{{ route('login') }}" class="btn">Lihat Detail</a>
       </div>
       @endforeach
     </div>
@@ -77,7 +77,7 @@
   <div class="container">
     <h2>Sudah Siap Memesan Mie Ayam Terenak di Kota?</h2>
     <p>Bergabunglah dengan ribuan pelanggan yang sudah merasakan kelezatan mie ayam Pakde Joyo</p>
-    <a href="{{ route('login') }}" class="btn" style="margin-top: 20px;">Login untuk Memesan</a>
+    <a href="{{ route('auth#loginPage') }}" class="btn" style="margin-top: 20px;">Login untuk Memesan</a>
   </div>
 </section>
 @endsection
