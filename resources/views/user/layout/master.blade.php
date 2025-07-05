@@ -116,7 +116,7 @@
             <h5>Kontak</h5>
             <p><i class="fa fa-phone me-1"></i> +62 882-0089-01178</p>
             <p><i class="fa fa-envelope me-1"></i> info@mieayampakdejoyo.com</p>
-            <p><i class="fa fa-map-marker-alt me-1"></i> Jl. Raya No. 123, Kota</p>
+            <p><i class="fa fa-map-marker-alt me-1"></i> Jl. Raya Rupakpicis, babakan slatri, klapasawit, Kec. Kalimanah, Kabupaten Purbalingga, Jawa Tengah</p>
         </div>
         <div class="col-md-3">
             <h5>Ikuti Kami</h5>
