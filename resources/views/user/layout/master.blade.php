@@ -55,6 +55,10 @@
                             <a class="nav-link {{ Request::routeIs('user#history') ? 'active' : '' }}"
                                 href="{{ route('user#history') }}">History</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('team') ? 'active' : '' }}"
+                                href="{{ route('team') }}">Team</a>
+                        </li>
                     </ul>
                     <div class="dropdown">
                         <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">

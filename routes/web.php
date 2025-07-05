@@ -124,3 +124,7 @@ Route::middleware(['user_auth'])->group(function () {
 });
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+Route::get('/team', function () {
+    return view('team');
+})->name('team');
