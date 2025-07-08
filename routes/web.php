@@ -10,6 +10,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\LandingController;
 
 // Public Landing Page
@@ -119,3 +120,9 @@ Route::middleware(['user_auth'])->group(function () {
     Route::get('/user/checkout', [CheckoutController::class, 'index'])->name('user#checkout');
     Route::post('/user/checkout/submit', [CheckoutController::class, 'submit'])->name('user#checkoutSubmit');
 });
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+Route::get('/team', function () {
+    return view('team');
+})->name('team');
