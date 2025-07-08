@@ -70,13 +70,13 @@
 </style>
 
 <div class="login-container">
-    <div class="login-title">Welcome Back!</div>
+    <div class="login-title">Selamat Datang!</div>
 
     <form action="{{ route('login') }}" method="post">
         @csrf
 
         <div class="form-group mb-3">
-            <label for="email">Email Address</label>
+            <label for="email">Masukan email</label>
             <input class="form-control @error('email') is-invalid @enderror" type="email" name="email" placeholder="Email" value="{{ old('email') }}">
             @error('email')
                 <small class="text-danger">{{ $message }}</small>
@@ -91,7 +91,7 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-login w-100">Sign In</button>
+        <button type="submit" class="btn btn-login w-100">Login</button>
     </form>
 
     <div class="register-link">

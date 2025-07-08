@@ -70,7 +70,7 @@
 </style>
 
 <div class="register-container">
-    <div class="register-title">Create Your Account</div>
+    <div class="register-title">Buat Akun Anda</div>
 
     <form action="{{ route('register') }}" method="POST">
         @csrf
