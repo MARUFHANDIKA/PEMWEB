@@ -4,12 +4,19 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="hero" style="background: url('{{ asset('images/bg.jpg') }}') no-repeat center center; background-size: cover; padding: 100px 0; color: white; text-align: center;">
-  <div class="container">
-    <h1>Nikmati Lezatnya <span>Mie Ayam Bakar</span> Spesial Pakde Joyo!</h1>
-    <p>Rasa autentik khas rumahan, harga bersahabat, dan cepat disajikan</p>
+<section class="hero" style="background-image: url('{{ asset('images/header.jpg') }}');">
+    <div class="overlay"></div>
+    <div class="content container">
+<h1 style="color: yellow;">
+    Nikmati Lezatnya <span style="color: yellow;">Mie Ayam Bakar</span> Spesial Pakde Joyo!
+</h1>
+<p style="color: white;">
+    Rasa autentik khas rumahan, harga bersahabat, dan cepat disajikan
+</p>
+
     <a href="{{ route('auth#loginPage') }}" class="btn-primary">Pesan Sekarang</a>
   </div>
+</div>
 </section>
 
 <!-- Tentang Kami -->
