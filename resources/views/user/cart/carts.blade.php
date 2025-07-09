@@ -7,8 +7,8 @@
             <div class="col-12">
                 <nav class="breadcrumb bg-white shadow-sm rounded px-3 py-2">
                     <a class="breadcrumb-item text-dark" href="#">Home</a>
-                    <a class="breadcrumb-item text-dark" href="#">Shop</a>
-                    <span class="breadcrumb-item active">Shopping Cart</span>
+                    <a class="breadcrumb-item text-dark" href="#">Toko</a>
+                    <span class="breadcrumb-item active">Keranjang belanja</span>
                 </nav>
             </div>
         </div>
@@ -24,12 +24,12 @@
                         <table class="table table-bordered align-middle mb-0" id="dataTable">
                             <thead class="table-dark text-center">
                                 <tr>
-                                    <th>Image</th>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
+                                    <th>gambar</th>
+                                    <th>Produk</th>
+                                    <th>Harga</th>
+                                    <th>kuantitas</th>
                                     <th>Total</th>
-                                    <th>Remove</th>
+                                    <th>hapus</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -71,21 +71,21 @@
                             <span id="subTotalPrice">Rp.{{ $totalPrice }}</span>
                         </div>
                         <div class="d-flex justify-content-between mb-2">
-                            <span>Delivery</span>
+                            <span>ongkos kirim</span>
                             <span>Rp.3000</span>
                         </div>
                         <div class="d-flex justify-content-between border-top pt-2">
                             <strong>Total</strong>
                             <strong id="finalTotal">Rp.{{ $totalPrice + 3000 }}</strong>
                         </div>
-                        <button class="btn btn-primary w-100 mt-3" id="orderBtn">Proceed To Checkout</button>
-                        <button class="btn btn-danger w-100 mt-2" id="clearBtn">Clear Cart</button>
+                        <button class="btn btn-primary w-100 mt-3" id="orderBtn">Checkout</button>
+                        <button class="btn btn-danger w-100 mt-2" id="clearBtn">Bersihkan Keranjang</button>
                     </div>
                 </div>
             </div>
         @else
             <div class="d-flex justify-content-center align-items-center" style="height: 50vh">
-                <h2 class="text-center text-muted">There are no carts right now</h2>
+                <h2 class="text-center text-muted">Belum ada pesanan di keranjang</h2>
             </div>
         @endif
     </div>

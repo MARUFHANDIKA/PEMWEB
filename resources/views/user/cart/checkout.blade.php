@@ -24,15 +24,8 @@
             <div class="mb-3">
                 <label>Metode Pembayaran</label>
                 <select name="payment_method" class="form-control" required>
-                    <option value="Transfer Bank">Transfer Bank</option>
                     <option value="COD">Bayar di Tempat (COD)</option>
-                    <option value="E-Wallet">E-Wallet</option>
                 </select>
-            </div>
-
-            <div class="mb-3">
-                <label>Bukti Pembayaran</label>
-                <input type="file" name="receipt" class="form-control" required>
             </div>
 
             <hr>
@@ -66,6 +59,59 @@
 
 
             <button type="submit" class="btn btn-success mt-4 w-100">Kirim Pesanan</button>
+            <button type="button" class="btn btn-danger mt-4 w-100" data-bs-toggle="modal"
+                data-bs-target="#paymentGuideModal">
+                Lihat tata cara pembayaran
+            </button>
+
         </form>
+        <div class="modal fade" id="paymentGuideModal" tabindex="-1" aria-labelledby="paymentGuideModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="paymentGuideModalLabel">🛒 Tata Cara Pemesanan & Pembayaran COD</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Mie Ayam Bakar Pakde Joyo</strong></p>
+                        <p>Nikmati kemudahan memesan mie ayam favorit Anda dari rumah! Ikuti langkah-langkah berikut untuk
+                            pemesanan dan pembayaran secara COD (Cash on Delivery):</p>
+
+                        <h6 class="mt-3">✅ Langkah-Langkah Pemesanan</h6>
+                        <ol>
+                            <li><strong>Buka Website Resmi:</strong> Kunjungi website Mie Ayam Bakar Pakde Joyo melalui
+                                browser di HP atau laptop Anda.</li>
+                            <li><strong>Pilih Menu yang Diinginkan:</strong> Telusuri daftar menu, klik tombol "Pesan
+                                Sekarang" pada produk yang ingin dipesan.</li>
+                            <li><strong>Isi Formulir Pemesanan:</strong> Masukkan data Anda: Nama lengkap, Nomor WhatsApp
+                                aktif, Alamat lengkap pengiriman, Catatan tambahan (opsional).</li>
+                            <li><strong>Pilih Metode Pembayaran:</strong> Pilih opsi “COD (Bayar di Tempat)”.</li>
+                            <li><strong>Klik “Kirim Pesanan”:</strong> Pesanan Anda akan langsung kami terima dan
+                                dikonfirmasi melalui WhatsApp.</li>
+                        </ol>
+
+                        <h6 class="mt-3">💵 Cara Pembayaran COD</h6>
+                        <ul>
+                            <li>Pembayaran dilakukan secara tunai saat pesanan tiba di lokasi Anda.</li>
+                            <li>Mohon siapkan uang pas untuk mempercepat proses transaksi.</li>
+                            <li>Kurir kami akan mengantar langsung ke alamat yang Anda berikan.</li>
+                        </ul>
+
+                        <h6 class="mt-3">⚠️ Syarat dan Ketentuan</h6>
+                        <ul>
+                            <li>Layanan COD berlaku untuk wilayah Purbalingga kota dan sekitarnya.</li>
+                            <li>Waktu pengantaran tergantung antrian dan stok, estimasi ±30–60 menit.</li>
+                            <li>Harap pastikan nomor WhatsApp dan alamat sudah benar saat mengisi formulir.</li>
+                            <li>Pembatalan hanya dapat dilakukan maksimal 10 menit setelah pemesanan.</li>
+                        </ul>
+
+                        <p class="mt-3">Terima kasih telah mendukung UMKM lokal!<br>
+                            Kami siap mengantarkan cita rasa lezat Mie Ayam Bakar Pakde Joyo langsung ke rumah Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 @endsection
