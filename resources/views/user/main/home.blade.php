@@ -31,9 +31,9 @@
     <div class="row">
         <!-- Sidebar Kategori -->
         <div class="col-lg-3 mb-4">
-            <h5 class="mb-3">Filter by Category</h5>
+            <h5 class="mb-3">Kategori Menu</h5>
             <ul class="list-group mb-4">
-                <a href="{{ route('user#home') }}" class="list-group-item list-group-item-action">All</a>
+                <a href="{{ route('user#home') }}" class="list-group-item list-group-item-action">Semua</a>
                 @foreach ($categories as $category)
                     <a href="{{ route('user#filter', $category->id) }}" class="list-group-item list-group-item-action">
                         {{ $category->name }}
@@ -78,7 +78,7 @@
                                 <div class="p-3 text-center">
                                     <h5 class="text-truncate">{{ $menu->name }}</h5>
                                     <p class="text-muted">Rp.{{ number_format($menu->price) }}</p>
-                                    <p class="small text-primary">Stok: {{ $menu->stock }}</p>
+                                    <p class="small text-warning">Stok: {{ $menu->stock }}</p>
                                     <div class="d-flex justify-content-center gap-2">
                                         <button class="btn btn-outline-primary btn-sm cartBtn">
                                             <i class="fa fa-shopping-cart"></i>
@@ -124,7 +124,7 @@
                                             <p class="text-muted">Rp.${response[i].price}</p>
                                             <p class="small text-secondary">Stok: ${response[i].stock}</p>
                                             <div class="d-flex justify-content-center gap-2">
-                                                <button class="btn btn-outline-primary btn-sm cartBtn">
+                                                <button class="btn btn-outline-warning btn-sm cartBtn">
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </button>
                                                 <a href="/user/show/${response[i].id}" class="btn btn-outline-info btn-sm">
