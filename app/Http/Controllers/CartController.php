@@ -29,17 +29,17 @@ class CartController extends Controller
 
         // Cek jika sudah ada di cart
         $cart = Cart::where('user_id', Auth::id())
-                    ->where('product_id', $productId)
-                    ->first();
+            ->where('product_id', $productId)
+            ->first();
 
         if ($cart) {
             $cart->quantity += $quantity;
             $cart->save();
         } else {
             Cart::create([
-                'user_id'    => Auth::id(),
+                'user_id' => Auth::id(),
                 'product_id' => $productId,
-                'quantity'   => $quantity,
+                'quantity' => $quantity,
             ]);
         }
 
@@ -71,4 +71,17 @@ class CartController extends Controller
 
         return back()->with('success', 'Jumlah berhasil diperbarui.');
     }
+
+    public function removeAjax($id)
+    {
+        $cart = Cart::find($id);
+
+        if ($cart && $cart->user_id == Auth::id()) {
+            $cart->delete();
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Item tidak ditemukan atau tidak memiliki akses.']);
+    }
+
 }

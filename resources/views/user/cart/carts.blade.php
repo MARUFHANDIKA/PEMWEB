@@ -54,8 +54,9 @@
                                             </div>
                                         </td>
                                         <td class="total">Rp.{{ ($c->product->price ?? 0) * $c->quantity }}</td>
-                                        <td class="text-center"><button class="btn btn-sm btn-danger btnRemove"><i
-                                                    class="fa fa-times"></i></button></td>
+                                        <td class="text-center">
+                                            <button class="btn btn-sm btn-danger btnRemove"><i class="fa fa-times"></i></button>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -93,7 +94,15 @@
 @endsection
 
 @section('scriptSource')
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $('#orderBtn').click(function () {
             let orderList = [];
             let random = Math.floor(Math.random() * 100000) + 1;
@@ -124,6 +133,9 @@
                 url: 'http://127.0.0.1:8000/user/ajax/order',
                 data: payLoad,
                 dataType: 'json',
+                xhrFields: {
+                    withCredentials: true
+                },
                 success: function (response) {
                     if (response.status == 'success') {
                         $('#dataTable tbody').html('');
@@ -135,46 +147,71 @@
         });
 
         $('#clearBtn').click(function () {
-            $.ajax({
-                type: 'get',
-                url: 'http://127.0.0.1:8000/user/ajax/clear/cart',
-                dataType: 'json',
-                success: function () {
-                    $('#dataTable tbody').html('');
-                    $('#subTotalPrice').text('Rp.0');
-                    $('#finalTotal').text('Rp.0');
+            Swal.fire({
+                title: 'Yakin?',
+                text: 'Keranjang akan dikosongkan!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya!',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "{{ route('ajax.clear.cart') }}",
+                        dataType: 'json',
+                        success: function (res) {
+                            if (res.status === 'success') {
+                                $('#dataTable tbody').html('');
+                                $('#subTotalPrice').text('Rp.0');
+                                $('#finalTotal').text('Rp.0');
+
+                                Swal.fire('Berhasil!', 'Keranjang kosong.', 'success');
+                            }
+                        },
+                        error: function (xhr) {
+                            console.log(xhr);
+                            Swal.fire('Gagal!', 'Terjadi kesalahan.', 'error');
+                        }
+                    });
                 }
             });
         });
 
-        // Remove individual cart item
         $(document).on('click', '.btnRemove', function () {
             let row = $(this).closest('tr');
-            let orderId = row.find('.orderId').val();
             let productId = row.find('.productId').val();
 
-            $.ajax({
-                type: 'get',
-                url: 'http://127.0.0.1:8000/user/ajax/remove',
-                data: { orderId: orderId, productId: productId },
-                dataType: 'json',
-                success: function (res) {
-                    if (res.status === 'success') {
-                        row.fadeOut(300, function () {
-                            $(this).remove();
-
-                            let total = 0;
-                            $('#dataTable tbody tr').each(function () {
-                                total += Number($(this).find('.total').text().replace("Rp.", "").replace(/,/g, ''));
-                            });
-
-                            $('#subTotalPrice').text(`Rp.${total}`);
-                            $('#finalTotal').text(`Rp.${total + 3000}`);
-                        });
-                    }
+            Swal.fire({
+                title: 'Hapus item ini?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya!',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "{{ route('ajax.remove.item') }}",
+                        data: { productId: productId },
+                        dataType: 'json',
+                        success: function (res) {
+                            if (res.status === 'success') {
+                                row.fadeOut(300, function () {
+                                    $(this).remove();
+                                });
+                                Swal.fire('Berhasil!', 'Item dihapus.', 'success');
+                            }
+                        },
+                        error: function (xhr) {
+                            console.log(xhr);
+                            Swal.fire('Gagal!', 'Terjadi kesalahan.', 'error');
+                        }
+                    });
                 }
             });
         });
+
+
+
         document.getElementById('orderBtn').addEventListener('click', function () {
             window.location.href = "{{ route('user#checkout') }}";
         });

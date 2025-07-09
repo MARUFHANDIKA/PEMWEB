@@ -11,6 +11,7 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\CartController;
 
 // Public Landing Page
 Route::get('/', [LandingController::class, 'index'])->name('landing');
@@ -105,9 +106,13 @@ Route::middleware(['auth'])->group(function () {
             Route::get('addToCart', [AjaxController::class, 'addToCart'])->name('ajax#addToCart');
             Route::get('autoAddToCart', [AjaxController::class, 'autoAddToCart'])->name('ajax#autoAddToCart');
             Route::get('order', [AjaxController::class, 'order'])->name('ajax#order');
-            Route::get('clear/cart', [AjaxController::class, 'clearCart'])->name('ajax#clearCart');
-            Route::get('remove', [AjaxController::class, 'remove'])->name('ajax#remove');
         });
+
+    });
+
+    Route::prefix('user/ajax')->group(function () {
+        Route::post('clear/cart', [AjaxController::class, 'clearCart'])->name('ajax.clear.cart');
+        Route::post('remove', [AjaxController::class, 'remove'])->name('ajax.remove.item');
     });
 
     // Order List for both admin/user
@@ -119,3 +124,8 @@ Route::middleware(['user_auth'])->group(function () {
     Route::get('/user/checkout', [CheckoutController::class, 'index'])->name('user#checkout');
     Route::post('/user/checkout/submit', [CheckoutController::class, 'submit'])->name('user#checkoutSubmit');
 });
+
+Route::get('/team', function () {
+    return view('team');
+})->name('team');
+

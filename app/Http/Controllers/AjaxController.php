@@ -126,15 +126,34 @@ class AjaxController extends Controller
 
     public function clearCart()
     {
-        Cart::where('user_id', Auth::user()->id)->delete();
+        \Log::info('CLEAR CART HIT', [
+            'user' => Auth::user(),
+            'token' => csrf_token(),
+            'session' => session()->all()
+        ]);
+
+        Cart::where('user_id', Auth::id())->delete();
+
+        return response()->json(['status' => 'success']);
     }
 
     public function remove(Request $request)
     {
+        \Log::info('REMOVE ITEM HIT', [
+            'product_id' => $request->productId,
+            'user' => Auth::user(),
+            'token' => csrf_token(),
+            'session' => session()->all()
+        ]);
+
         Cart::where('product_id', $request->productId)
-            ->where('user_id', Auth::user()->id)
+            ->where('user_id', Auth::id())
             ->delete();
+
+        return response()->json(['status' => 'success']);
     }
+
+
 
     public function orderStatus(Request $request)
     {
