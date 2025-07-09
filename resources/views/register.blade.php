@@ -4,7 +4,7 @@
 
 @section('content')
     <style>
-        .register-container {
+        <style>.register-container {
             max-width: 480px;
             margin: 60px auto;
             background: #ffffff;
@@ -33,18 +33,20 @@
         }
 
         .btn-register {
-            background: #28a745;
+            background: #dc3545;
             color: white;
             font-weight: 600;
             font-size: 16px;
             border-radius: 8px;
             padding: 12px 0;
             transition: all 0.3s ease;
+            border: none;
         }
 
         .btn-register:hover {
-            background: #218838;
+            background: #c82333;
         }
+
 
         .register-link {
             margin-top: 20px;
@@ -63,10 +65,68 @@
 
         @media (max-width: 576px) {
             .register-container {
-                margin: 30px 20px;
-                padding: 30px 20px;
+                max-width: 480px;
+                margin: 60px auto;
+                background: #ffffff;
+                border-radius: 12px;
+                box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+                padding: 40px;
             }
-        }
+
+            .register-title {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 25px;
+                text-align: center;
+                color: #333;
+            }
+
+            .form-group label {
+                font-weight: 500;
+                margin-bottom: 6px;
+            }
+
+            .form-control {
+                height: 45px;
+                font-size: 15px;
+                border-radius: 8px;
+            }
+
+            .btn-register {
+                background: #28a745;
+                color: white;
+                font-weight: 600;
+                font-size: 16px;
+                border-radius: 8px;
+                padding: 12px 0;
+                transition: all 0.3s ease;
+            }
+
+            .btn-register:hover {
+                background: #218838;
+            }
+
+            .register-link {
+                margin-top: 20px;
+                text-align: center;
+                font-size: 14px;
+            }
+
+            .register-link a {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+            .register-link a:hover {
+                text-decoration: underline;
+            }
+
+            @media (max-width: 576px) {
+                .register-container {
+                    margin: 30px 20px;
+                    padding: 30px 20px;
+                }
+            }
     </style>
 
     <div class="register-container">
