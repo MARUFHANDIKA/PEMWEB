@@ -33,7 +33,8 @@
             color: #ecf0f1;
         }
 
-        aside .nav-link.active, aside .nav-link:hover {
+        aside .nav-link.active,
+        aside .nav-link:hover {
             background-color: #34495e;
             border-radius: 8px;
         }
@@ -61,36 +62,42 @@
         <aside class="text-white p-3" style="width: 250px;">
             <div class="text-center mb-4">
                 <a href="#" class="text-white text-decoration-none">
-                    {{-- <img src="{{ asset('admin/images/icon/logo.png') }}" alt="Logo" class="img-fluid mb-2" style="max-height: 50px;"> --}}
+                    {{-- <img src="{{ asset('admin/images/icon/logo.png') }}" alt="Logo" class="img-fluid mb-2"
+                        style="max-height: 50px;"> --}}
                     <h5 class="fw-bold">Admin Panel</h5>
                 </a>
             </div>
             <ul class="nav flex-column">
                 <li class="nav-item mb-2">
-                    <a href="{{ route('category#list') }}" class="nav-link"><i class="fas fa-chart-bar me-2"></i>Category</a>
+                    <a href="{{ route('category#list') }}" class="nav-link"><i
+                            class="fas fa-chart-bar me-2"></i>Kategori</a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="{{ route('product#list') }}" class="nav-link"><i class="fas fa-pizza-slice me-2"></i>Products</a>
+                    <a href="{{ route('product#list') }}" class="nav-link"><i
+                            class="fas fa-pizza-slice me-2"></i>Produk</a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="{{ route('order#list') }}" class="nav-link"><i class="fas fa-list me-2"></i>Orders</a>
+                    <a href="{{ route('order#list') }}" class="nav-link"><i class="fas fa-list me-2"></i>Pesanan</a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="{{ route('user#list') }}" class="nav-link"><i class="fas fa-users me-2"></i>Customers</a>
+                    <a href="{{ route('user#list') }}" class="nav-link"><i class="fas fa-users me-2"></i>Customer</a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="{{ route('admin#list') }}" class="nav-link"><i class="fas fa-user-cog me-2"></i>Admin List</a>
+                    <a href="{{ route('admin#list') }}" class="nav-link"><i class="fas fa-user-cog me-2"></i>List
+                        Admin</a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="{{ route('admin#detail') }}" class="nav-link"><i class="fas fa-user me-2"></i>Account</a>
+                    <a href="{{ route('admin#detail') }}" class="nav-link"><i class="fas fa-user me-2"></i>Akun</a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="{{ route('admin#changePasswordPage') }}" class="nav-link"><i class="fas fa-lock me-2"></i>Change Password</a>
+                    <a href="{{ route('admin#changePasswordPage') }}" class="nav-link"><i
+                            class="fas fa-lock me-2"></i>Ganti Password</a>
                 </li>
                 <li class="nav-item mt-4">
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn text-white w-100"><i class="fas fa-sign-out-alt me-2"></i>Logout</button>
+                        <button type="submit" class="btn text-white w-100"><i
+                                class="fas fa-sign-out-alt me-2"></i>Logout</button>
                     </form>
                 </li>
             </ul>

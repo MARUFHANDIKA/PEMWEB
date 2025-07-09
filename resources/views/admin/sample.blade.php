@@ -49,16 +49,16 @@
                     <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
                             <a class="js-arrow" href="index.html">
-                                <i class="fas fa-tachometer-alt"></i>Home Page
+                                <i class="fas fa-tachometer-alt"></i>Beranda
                             </a>
                         </li>
                         <li>
                             <a href="category.html">
-                                <i class="fas fa-chart-bar"></i>Category</a>
+                                <i class="fas fa-chart-bar"></i>Kategori</a>
                         </li>
                         <li>
                             <a href="customerList.html">
-                                <i class="fas fa-chart-bar"></i>Customers</a>
+                                <i class="fas fa-chart-bar"></i>Pelanggan</a>
                         </li>
                     </ul>
                 </nav>
@@ -74,7 +74,8 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                <input class="au-input au-input--xl" type="text" name="search"
+                                    placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
@@ -86,14 +87,14 @@
                                         <span class="quantity">3</span>
                                         <div class="notifi-dropdown js-dropdown">
                                             <div class="notifi__title">
-                                                <p>You have 3 Notifications</p>
+                                                <p>anda mempunya 3 notifikasi</p>
                                             </div>
                                             <div class="notifi__item">
                                                 <div class="bg-c1 img-cir img-40">
                                                     <i class="zmdi zmdi-email-open"></i>
                                                 </div>
                                                 <div class="content">
-                                                    <p>You got a email notification</p>
+                                                    <p>anda menerima pesan email baru</p>
                                                     <span class="date">April 12, 2018 06:50</span>
                                                 </div>
                                             </div>
@@ -102,7 +103,7 @@
                                                     <i class="zmdi zmdi-account-box"></i>
                                                 </div>
                                                 <div class="content">
-                                                    <p>Your account has been blocked</p>
+                                                    <p>akunmu telah diblokir</p>
                                                     <span class="date">April 12, 2018 06:50</span>
                                                 </div>
                                             </div>
@@ -111,7 +112,7 @@
                                                     <i class="zmdi zmdi-file-text"></i>
                                                 </div>
                                                 <div class="content">
-                                                    <p>You got a new file</p>
+                                                    <p>kamu mendapat file baru</p>
                                                     <span class="date">April 12, 2018 06:50</span>
                                                 </div>
                                             </div>

@@ -14,6 +14,7 @@
                 <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about">Tentang Kami</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('team') }}">tim pengembang</a></li>
                 <li class="nav-item"><a class="btn btn-danger ms-3" href="{{ route('auth#loginPage') }}">Login</a></li>
             </ul>
         </div>
