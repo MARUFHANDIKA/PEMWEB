@@ -32,19 +32,21 @@
         border-radius: 8px;
     }
 
-    .btn-register {
-        background: #28a745;
-        color: white;
-        font-weight: 600;
-        font-size: 16px;
-        border-radius: 8px;
-        padding: 12px 0;
-        transition: all 0.3s ease;
-    }
+.btn-register {
+    background: #dc3545;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 8px;
+    padding: 12px 0;
+    transition: all 0.3s ease;
+    border: none;
+}
 
-    .btn-register:hover {
-        background: #218838;
-    }
+.btn-register:hover {
+    background: #c82333;
+}
+
 
     .register-link {
         margin-top: 20px;
